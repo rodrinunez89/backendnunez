@@ -1,0 +1,122 @@
+[
+    {
+        "title": "camisa",
+        "description": "blanca lisa",
+        "price": 82,
+        "thumbnail": "sin imagen",
+        "stock": 82,
+        "status": true,
+        "code": "abc01",
+        "id": 1
+    },
+    {
+        "title": "pantalon",
+        "description": "blanca lisa",
+        "price": 95,
+        "thumbnail": "sin imagen",
+        "stock": 95,
+        "status": true,
+        "code": "abc02",
+        "id": 2
+    },
+    {
+        "title": "campera",
+        "description": "blanca lisa",
+        "price": 99,
+        "thumbnail": "sin imagen",
+        "stock": 99,
+        "status": true,
+        "code": "abc03",
+        "id": 3
+    },
+    {
+        "title": "camisa test 5",
+        "description": "blanca lisa test 5",
+        "price": 82,
+        "thumbnail": "sin imagen",
+        "stock": 82,
+        "status": true,
+        "code": "abc13",
+        "id": 4
+    },
+    {
+        "title": "jeans 2",
+        "description": "blanca lisa 2",
+        "price": 92,
+        "thumbnail": "sin imagen",
+        "stock": 92,
+        "status": false,
+        "code": "abc05",
+        "id": 5
+    },
+    {
+        "title": "jeans 3",
+        "description": "blanca lisa 3",
+        "price": 92,
+        "thumbnail": "sin imagen",
+        "stock": 92,
+        "status": true,
+        "code": "abc06",
+        "id": 6
+    },
+    {
+        "title": "jeans 4",
+        "description": "blanca lisa 4",
+        "price": 92,
+        "thumbnail": "sin imagen",
+        "stock": 92,
+        "status": false,
+        "code": "abc07",
+        "id": 7
+    },
+    {
+        "title": "remeras 1",
+        "description": "blanca lisa 1",
+        "price": 92,
+        "thumbnail": "sin imagen",
+        "stock": 92,
+        "status": true,
+        "code": "abc08",
+        "id": 8
+    },
+    {
+        "title": "remeras 2",
+        "description": "blanca lisa 2",
+        "price": 92,
+        "thumbnail": "sin imagen",
+        "status": false,
+        "stock": 92,
+        "code": "abc09",
+        "id": 9
+    },
+    {
+        "title": "remeras 3",
+        "description": "blanca lisa 3",
+        "price": 92,
+        "thumbnail": "sin imagen",
+        "status": true,
+        "stock": 92,
+        "code": "abc10",
+        "id": 10
+    },
+    {
+        "title": "camisa test",
+        "description": "blanca lisa test",
+        "price": 82,
+        "status": true,
+        "thumbnail": "sin imagen",
+        "code": "abc11",
+        "stock": 82,
+        "id": 11
+    },
+    {
+        "title": "camisa test 2",
+        "description": "blanca lisa test 2",
+        "price": 82,
+        "status": true,
+        "thumbnail": "sin imagen",
+        "code": "abc12",
+        "stock": 82,
+        "id": 12
+    }
+]
