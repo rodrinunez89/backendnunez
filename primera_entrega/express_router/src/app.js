@@ -1,6 +1,7 @@
-const express = require('express');
-const productsRouter = require('./routes/products.routes');
-const cartRouter = require('./routes/cart.routes');
+import express from "express";
+import productsRouter from './routes/products.routes.js';
+import cartRouter from './routes/cart.routes.js';
+import { __dirname } from "./utils.js";
 
 const puerto = 3000;
 
@@ -10,6 +11,8 @@ server.use(express.urlencoded({ extended: true }));
 
 server.use('/api/products',productsRouter);
 server.use('/api/cart',cartRouter);
+
+
 
 
 

@@ -1,9 +1,14 @@
-const express = require('express');
-const path = require('path');
-const manager = require('../productManager/product_manager');
-const productManager = new manager(path.resolve(__dirname, '../productManager/products.json'));
+import { Router } from "express";
+import ProductManager from "../productManager/product_manager.js";
+import { __dirname } from "../utils.js";
 
-const router = express.Router();
+
+
+
+const router = Router();
+const productManager = new ProductManager(`${__dirname}/productManager/products.json`);
+
+
 
 router.get('/', (req,res)=>{
     let limit = parseInt(req.query.limit)
@@ -64,4 +69,4 @@ router.put('/:pid', async (req,res)=>{
 
 
 
-module.exports = router;
+export default router;
