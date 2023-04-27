@@ -15,3 +15,22 @@
         </div>
     </div>
 </div>
+
+<script>
+// Conectamos al servidor socket.io.
+    const socket = io('ws://localhost:3050');
+    // const socket = io(`${location.host}:3050`);
+
+
+ socket.on('connect', () => { // Escuchamos el evento connect para detectar cuándo logramos conectar al servidor
+        // Escuchamos por el evento server_confirm desde el servidor
+        socket.on('server_confirm', (data) => {
+            console.log(data);
+        });
+
+        socket.on('msg_received', (data) => {
+            messagesLog.innerHTML = `${messagesLog.innerHTML}<br>(${data.user}) ${data.msg}`;
+        });
+    })
+
+</script>
