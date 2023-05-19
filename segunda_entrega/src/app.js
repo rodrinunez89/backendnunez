@@ -1,11 +1,14 @@
+import {} from 'dotenv/config.js';
+
+import http from 'http';
 import express from "express";
-import productsRouter from './routes/products.routes.js';
-import cartRouter from './routes/cart.routes.js';
-import { __dirname } from "./utils.js";
 import { engine } from 'express-handlebars';
 import { Server } from 'socket.io'; // Se creará a partir del server HTTP
 
+import productsRouter from './routes/products.routes.js';
+import cartRouter from './routes/cart.routes.js';
 
+import { __dirname } from "./utils.js";
 
 const puerto = parseInt(process.env.puerto || 3000);
 const ws_puerto = parseInt(process.env.ws_puerto || 3050);
