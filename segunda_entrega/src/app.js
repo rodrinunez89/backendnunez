@@ -4,6 +4,7 @@ import http from 'http';
 import express from "express";
 import { engine } from 'express-handlebars';
 import { Server } from 'socket.io'; // Se creará a partir del server HTTP
+import mongoose from 'mongoose';
 
 import productsRouter from './routes/products.routes.js';
 import cartRouter from './routes/cart.routes.js';
@@ -12,6 +13,8 @@ import { __dirname } from "./utils.js";
 
 const puerto = parseInt(process.env.puerto || 3000);
 const ws_puerto = parseInt(process.env.ws_puerto || 3050);
+const mongoose_url = process.env.mongoose_url;
+
 
 const server = express();
 const httpServer = server.listen(ws_puerto, () => {
@@ -63,6 +66,17 @@ io.on('connection', (socket) => { // Escuchamos el evento connection por nuevas 
     });
 });
 
+
+// Activación del servidor
+try {
+    await mongoose.connect(mongoose_url);
+
+    app.listen(puerto, () => {
+        console.log(`Servidor iniciado en puerto ${puerto}`);
+    });
+} catch(err) {
+    console.log(err.message);
+}
 
 
 
