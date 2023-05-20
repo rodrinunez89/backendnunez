@@ -74,7 +74,7 @@ server.use('/public', express.static(`${__dirname}/public`));
 
 // Activación del servidor
 try {
-    await mongoose.connect('mongodb://127.0.0.1:27017/rodrigo_pf');
+    await mongoose.connect(mongoose_url);
 
     httpServer.listen(puerto, () => {
         console.log(`Servidor iniciado en puerto ${puerto}`);
