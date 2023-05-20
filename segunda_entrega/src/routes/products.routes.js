@@ -8,7 +8,13 @@ import { __dirname } from "../utils.js";
 const router = Router();
 const productManager = new ProductManager(`${__dirname}/productManager/products.json`);
 
-
+const productRoutes = (io) => {
+    router.get('/products_index', async (req, res) => {
+        const products = await manager.getProducts();
+        res.render('index_products', {
+            products: products
+        });
+    });
 
 router.get('/', (req,res)=>{
     let limit = parseInt(req.query.limit)
@@ -64,9 +70,11 @@ router.put('/:pid', async (req,res)=>{
         res.send({status:200, message:"Product updated"})
     }
 });
+return router;
+}
 
 
 
 
 
-export default router;
+export default productRoutes;

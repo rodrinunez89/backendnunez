@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
+import productModel from './products.model.js';
 
 class ProductManager {
     constructor(path){
@@ -62,7 +63,8 @@ class ProductManager {
     }
 
     async getProducts(){
-        const products = await fs.readFile(this.path ,'utf-8');
+        //const products = await fs.readFile(this.path ,'utf-8');
+        const products = await productModel.find();
         const productsJson = JSON.parse(products);
         return productsJson;
     }

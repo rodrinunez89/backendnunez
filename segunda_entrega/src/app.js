@@ -1,10 +1,11 @@
 import {} from 'dotenv/config.js';
 
 import http from 'http';
+import mongoose from 'mongoose';
 import express from "express";
 import { engine } from 'express-handlebars';
 import { Server } from 'socket.io'; // Se creará a partir del server HTTP
-import mongoose from 'mongoose';
+
 
 import productsRouter from './routes/products.routes.js';
 import cartRouter from './routes/cart.routes.js';
@@ -12,14 +13,12 @@ import cartRouter from './routes/cart.routes.js';
 import { __dirname } from "./utils.js";
 
 const puerto = parseInt(process.env.puerto || 3000);
-const ws_puerto = parseInt(process.env.ws_puerto || 3050);
+
 const mongoose_url = process.env.mongoose_url;
 
 
 const server = express();
-const httpServer = server.listen(ws_puerto, () => {
-    console.log(`Servidor socketio iniciado en puerto ${ws_puerto}`);
-});
+const httpServer = http.createServer(server);
 const io = new Server(httpServer, {
     cors: {
         origin: "*",
@@ -37,14 +36,13 @@ server.use('/api/carts',cartRouter);
 
 // Motor de plantillas
 server.engine('handlebars', engine());
-server.set('views', './views');
+server.set('views', `${__dirname}/views`);
 server.set('view engine', 'handlebars');
 
 
-// Contenidos estáticos
-server.use('/public', express.static(`${__dirname}/public`));
 
-server.listen (puerto, () => {
+
+httpServer.listen (puerto, () => {
 
     console.log(`Servidor base API / estatico iniciado en puerto ${puerto}`)
 }
@@ -66,12 +64,19 @@ io.on('connection', (socket) => { // Escuchamos el evento connection por nuevas 
     });
 });
 
+//Endpoint APIREST
+server.use('/api', productsRouter(io));
+server.use('/api', cartRouter(io));
+
+// Contenidos estáticos
+server.use('/public', express.static(`${__dirname}/public`));
+
 
 // Activación del servidor
 try {
-    await mongoose.connect(mongoose_url);
+    await mongoose.connect('mongodb://127.0.0.1:27017/rodrigo_pf');
 
-    app.listen(puerto, () => {
+    httpServer.listen(puerto, () => {
         console.log(`Servidor iniciado en puerto ${puerto}`);
     });
 } catch(err) {
